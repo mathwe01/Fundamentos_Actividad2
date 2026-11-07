@@ -5,11 +5,14 @@ def mostrar_menu():
     print("2. Ver solicitudes registradas")
     print("3. Salir")
 
+def validar_texto_obligatorio(texto):
+    limpio = texto.strip()
+    return limpio != ""
+
 def main():
     opcion = ""
     while opcion != "3":
         mostrar_menu()
         opcion = input("Elija una opción: ")
-
 
 main()
