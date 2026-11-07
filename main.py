@@ -17,6 +17,16 @@ def validar_tipo_consulta(tipo):
     tipos_validos = ["matricula", "pagos", "constancia", "plataforma", "otro"]
     return tipo.strip().lower() in tipos_validos
 
+def asignar_prioridad(tipo):
+    tipo=tipo.strip().lower()
+    if tipo in ["matricula", "pagos"]:
+        prioridad = "Alta"
+    elif tipo == "plataforma":
+        prioridad = "Media"
+    else:
+        prioridad = "Baja"
+    return prioridad
+    
 def main():
     opcion = ""
     while opcion != "3":
