@@ -9,6 +9,10 @@ def validar_texto_obligatorio(texto):
     limpio = texto.strip()
     return limpio != ""
 
+def validar_codigo(codigo, longitud_minima):
+    limpio = codigo.strip()
+    return limpio != "" and len(limpio) >= longitud_minima
+
 def main():
     opcion = ""
     while opcion != "3":
