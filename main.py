@@ -13,6 +13,10 @@ def validar_codigo(codigo, longitud_minima):
     limpio = codigo.strip()
     return limpio != "" and len(limpio) >= longitud_minima
 
+def validar_tipo_consulta(tipo):
+    tipos_validos = ["matricula", "pagos", "constancia", "plataforma", "otro"]
+    return tipo.strip().lower() in tipos_validos
+
 def main():
     opcion = ""
     while opcion != "3":
