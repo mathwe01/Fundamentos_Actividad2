@@ -49,6 +49,7 @@ def mostrar_resumen(solicitud):
 def main():
    LONGITUD_MINIMA = 8
    opcion = ""
+   solicitudes = []
    while opcion != "3":
        mostrar_menu()
        opcion = input("Elija una opcion: ")
@@ -59,7 +60,7 @@ def main():
            print("Tipos de consulta: matricula, pagos, constancia, plataforma, otro")
            tipo = input("Tipo de consulta: ")
            descripcion = input("Descripción breve: ")
-           
+       
            if not validar_codigo(codigo, LONGITUD_MINIMA):
                print("Error: el código debe tener al menos 8 caracteres.")
            elif not validar_texto_obligatorio(nombre) or not validar_texto_obligatorio(descripcion):
@@ -69,6 +70,15 @@ def main():
            else:
                prioridad = asignar_prioridad(tipo)
                solicitud = registrar_solicitud(codigo, nombre, tipo, descripcion, prioridad)
+               solicitudes.append(solicitud)
                mostrar_resumen(solicitud)
+               
+       elif opcion == "2":
+            if len(solicitudes) == 0:
+                print("Aún no hay solicitudes registradas.")
+            else:
+                print("\nTotal de solicitudes:", len(solicitudes))
+                for solicitud in solicitudes:
+                    mostrar_resumen(solicitud)
                
 main()
