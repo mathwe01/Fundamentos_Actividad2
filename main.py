@@ -36,6 +36,14 @@ def registrar_solicitud(codigo, nombre, tipo, descripcion, prioridad):
         "prioridad": prioridad,
     }
     return solicitud
+
+def mostrar_resumen(solicitud):
+    print("\n=== Resumen de la solicitud ===")
+    print("Código:", solicitud["codigo"])
+    print("Nombre:", solicitud["nombre"])
+    print("Tipo de consulta:", solicitud["tipo"])
+    print("Descripción:", solicitud["descripcion"])
+    print("Prioridad:", solicitud["prioridad"])
         
     
 def main():
@@ -61,6 +69,6 @@ def main():
            else:
                prioridad = asignar_prioridad(tipo)
                solicitud = registrar_solicitud(codigo, nombre, tipo, descripcion, prioridad)
-               print("Solicitud registrada con prioridad", solicitud["prioridad"])
-
+               mostrar_resumen(solicitud)
+               
 main()
