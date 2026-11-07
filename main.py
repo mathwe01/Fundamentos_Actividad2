@@ -26,11 +26,41 @@ def asignar_prioridad(tipo):
     else:
         prioridad = "Baja"
     return prioridad
+
+def registrar_solicitud(codigo, nombre, tipo, descripcion, prioridad):
+    solicitud = {
+        "codigo": codigo.strip(),
+        "nombre": nombre.strip(),
+        "tipo": tipo.strip(),
+        "descripcion": descripcion.strip(),
+        "prioridad": prioridad,
+    }
+    return solicitud
+        
     
 def main():
-    opcion = ""
-    while opcion != "3":
-        mostrar_menu()
-        opcion = input("Elija una opción: ")
+   LONGITUD_MINIMA = 8
+   opcion = ""
+   while opcion != "3":
+       mostrar_menu()
+       opcion = input("Elija una opcion: ")
+       
+       if opcion == "1":
+           codigo = input("Código de estudiante: ")
+           nombre = input("Nombre : ")
+           print("Tipos de consulta: matricula, pagos, constancia, plataforma, otro")
+           tipo = input("Tipo de consulta: ")
+           descripcion = input("Descripción breve: ")
+           
+           if not validar_codigo(codigo, LONGITUD_MINIMA):
+               print("Error: el código debe tener al menos 8 caracteres.")
+           elif not validar_texto_obligatorio(nombre) or not validar_texto_obligatorio(descripcion):
+               print("Error: el nombre y la descripción son obligatorios.")
+           elif not validar_tipo_consulta(tipo):
+               print("Error: tipo de consulta inválido.")
+           else:
+               prioridad = asignar_prioridad(tipo)
+               solicitud = registrar_solicitud(codigo, nombre, tipo, descripcion, prioridad)
+               print("Solicitud registrada con prioridad", solicitud["prioridad"])
 
 main()
