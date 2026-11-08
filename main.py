@@ -18,14 +18,14 @@ def validar_codigo(codigo, longitud_minima):
 
 def validar_tipo_consulta(tipo):
     # Recibe el tipo de consulta que escribió el usuario y revisa si está en la lista permitida
-    tipos_validos = ["matricula", "pagos", "constancia", "plataforma", "otro"]  # variable local, la lista solo se usa aquí
+    tipos_validos = ["matricula", "matrícula", "pagos", "constancia", "plataforma", "otro"]  # variable local, la lista solo se usa aquí
     return tipo.strip().lower() in tipos_validos
 
 def asignar_prioridad(tipo):
     # Segun el tipo de consulta que reciba, devuelve si la prioridad es alta, media o baja
 
     tipo=tipo.strip().lower()
-    if tipo in ["matricula", "pagos"]:
+    if tipo in ["matricula", "matrícula", "pagos"]:
         prioridad = "Alta"  # variable local, solo se usa dentro de esta función
     elif tipo == "plataforma":
         prioridad = "Media"
@@ -89,5 +89,6 @@ def main():
                 print("\nTotal de solicitudes:", len(solicitudes))
                 for solicitud in solicitudes:
                     mostrar_resumen(solicitud)
-                
-main()
+               
+if __name__ == "__main__": 
+    main()
