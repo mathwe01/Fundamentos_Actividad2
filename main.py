@@ -8,7 +8,7 @@ def mostrar_menu():
 
 def validar_texto_obligatorio(texto):
     # Recibe un texto y me dice si tiene algo escrito o está vacío
-    limpio = texto.strip()
+    limpio = texto.strip()  # variable local, solo existe dentro de esta función
     return limpio != ""
 
 def validar_codigo(codigo, longitud_minima):
@@ -18,7 +18,7 @@ def validar_codigo(codigo, longitud_minima):
 
 def validar_tipo_consulta(tipo):
     # Recibe el tipo de consulta que escribió el usuario y revisa si está en la lista permitida
-    tipos_validos = ["matricula", "pagos", "constancia", "plataforma", "otro"]
+    tipos_validos = ["matricula", "pagos", "constancia", "plataforma", "otro"]  # variable local, la lista solo se usa aquí
     return tipo.strip().lower() in tipos_validos
 
 def asignar_prioridad(tipo):
@@ -26,7 +26,7 @@ def asignar_prioridad(tipo):
 
     tipo=tipo.strip().lower()
     if tipo in ["matricula", "pagos"]:
-        prioridad = "Alta"
+        prioridad = "Alta"  # variable local, solo se usa dentro de esta función
     elif tipo == "plataforma":
         prioridad = "Media"
     else:
@@ -41,7 +41,7 @@ def registrar_solicitud(codigo, nombre, tipo, descripcion, prioridad):
         "tipo": tipo.strip(),
         "descripcion": descripcion.strip(),
         "prioridad": prioridad,
-    }
+    }  # variable local, la devuelvo con return para usarla en main
     return solicitud
 
 def mostrar_resumen(solicitud):
@@ -55,6 +55,7 @@ def mostrar_resumen(solicitud):
         
     
 def main():
+    # Estas variables son del programa principal y solo existen dentro de main
    LONGITUD_MINIMA = 8
    opcion = ""
    solicitudes = []
